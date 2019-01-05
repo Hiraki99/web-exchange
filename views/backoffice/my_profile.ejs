@@ -1,0 +1,118 @@
+<% layout ("../layout/layout_backoffice") -%>
+    <div id="sidebar_content" class="col-md-8 page__sidebar_content">
+        <!-- .page-dashboard -->
+        <div class="page-dashboard">
+
+            <!-- #profile -->
+            <div id="profile" class="bitex-view bitex-view-active" style="">
+                <!-- .page__head -->
+                <header class="page__head section-title">
+                    <h1 class="page__title h2 bitex-view-title">
+                        <i class="glyphicon glyphicon-user"></i> My Profile
+                    </h1>
+                </header>
+                <!-- /.page__head -->
+
+                <!-- .page__body -->
+                <div class="page__body">
+                    <div id="profile_content" class="bitex-view-content">
+                        <div id="account_overview_user_id">
+                            <table class="profile-table table page__section_white">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>ID</strong>
+                                        </td>
+                                        <td>90000002</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Username</strong>
+                                        </td>
+                                        <td>user</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Email</strong>
+                                        </td>
+                                        <td>user@blinktrade.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Is verified</strong>
+                                        </td>
+                                        <td class="account-overview-val account-overview-verified">
+                                            <span class="label label-success">Yes - Level III</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Email preferred language</strong>
+                                        </td>
+                                        <td>
+                                            <select id="id_select_new_email_language" data-profile-change="EmailLang">
+                                                <option value="en" selected="">English</option>
+                                                <option value="pt_BR">Brazilian Portuguese</option>
+                                                <option value="es">Spanish</option>
+                                                <option value="vi">Vietnamese</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Should confirm new orders?</strong>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" data-profile-change="ConfirmationOrder">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="change_password_place_holder"></div>
+                        <div class="col-xs-12 col-md-6 page__section_white page__padding profile__change_password">
+                            <div id=":2d.form">
+                                <legend class="profile-change-password__title">Change Your password</legend>
+                                <div class="form-group">
+                                    <label for=":2d.form_oldpassword">Current password:</label>
+                                    <input autocapitalize="off" autocorrect="off" type="password"
+                                        class="form-control" id=":2d.form_oldpassword" name="username">
+                                </div>
+                                <div class="form-group">
+                                    <label for=":2d.form_password">New password:</label>
+                                    <input type="password" class="form-control" id=":2d.form_password"
+                                        name="password">
+                                </div>
+                                <div class="form-group">
+                                    <label for=":2d.form_repeat_password">Confirm new password:</label>
+                                    <input id=":2d.form_repeat_password" class="form-control"
+                                        placeholder="" name="repeat_password" type="password">
+                                </div>
+                                <button id=":2d.form_change" class="btn btn-primary">Change Password</button>
+                                <!-- .profile-change-password__form -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- .profile-two-factor -->
+                    <div class="profile-two-factor col-xs-12 col-md-5 page__section_white page__padding">
+                        <!-- .profile-two-factor__title -->
+                        <h4 class="profile-two-factor__title">Two factor authentication (2FA)</h4>
+                        <!-- /.profile-two-factor__title -->
+
+                        <!-- .profile-two-factor__foot -->
+                        <div class="profile-two-factor__foot">
+                            <a data-switch-view="twofactor" id="id_btn_enable_two_factor" class="btn btn-success profile-two-factor__btn">Enable</a>
+                            <button id="id_btn_disable_two_factor" class="btn btn-danger profile-two-factor__btn" style="display: none;">Disable</button>
+                        </div>
+                        <!-- /.profile-two-factor__foot -->
+                    </div>
+                    <!-- /.profile-two-factor -->
+                </div>
+                <!-- /.page__body -->
+            </div>
+            <!-- /#profile -->
+        </div>
+        <!-- /.page-dashboard -->
+    </div>

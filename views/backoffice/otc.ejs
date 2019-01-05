@@ -1,0 +1,473 @@
+<!-- .page-dashboard -->
+<script src="/js/js_backoffice/bootstrap.min.js"></script>
+<div class="page-dashboard">
+    <!-- #offerbook -->
+    <div id="offerbook" class="bitex-view bitex-view-active" style="">
+        <!-- .page__head -->
+        <header class="page__head section-title">
+            <h3 class="page__title bitex-view-title">
+                <i class="glyphicon glyphicon-book"></i> OTC Market
+            </h3>
+        </header>
+        <!-- /.page__head -->
+        <!-- chart -->
+        <div id="market_trading_view" class='bitex-view-content page__body' style='height:50%'>
+            <iframe src="/labs/html/tradingview.html?v=12131">
+        
+            </iframe>
+        </div>
+        <!-- end chart -->
+        <!-- .page__body -->
+        <div class="page__body bitex-view-content">
+            <!-- .chart -->
+            <!-- <div id="offer_book_order_entry_content" class="chart order">
+                        chart
+                    </div> -->
+            <!-- .order -->
+            <div id="offer_book_order_entry_content" class="order">
+                <div id=":order_entry_bid" style="border-right: 1px solid rgba(41,47,51,0.1);" class="col-md-6 col-xs-12 uniForm" data-uniform-control-holder-class="uniform-control-holder">
+                    <!-- .order-form -->
+                    <div class="order-form">
+                        <!-- .order-form__head -->
+                        <header class="order-form__head">
+                            <h4 class="order-form__title order-form__buy">
+                                <i class="glyphicon glyphicon-shopping-cart"></i> Buy
+                                <span class="pairCoinFirst">ETH</span>
+                            </h4>
+                            <%if (role != "guest") { %>
+                                <div id=":1h.order_entry_available_badge" class="order-form__balance">
+                                        Available(
+                                        <span class="pairCoinSecond">ETH</span>):&nbsp;
+                                        <strong class="avaiable_balance_buy">0.00000</strong>
+                                    </div>
+                            <% } %>   
+                            
+                        </header>
+                        <!-- /.order-form__head -->
+                        <!-- .order-form__mid -->
+                        <div class="order-form__mid">
+                            <!-- .form-group -->
+                            <div class="form-group uniform-control-holder">
+                                <label for="order_entry_price_bid" class="order-form__label order-entry-label">Price:</label>
+                                <div class="input-group">
+                                    <input id="order_entry_price_bid" name="price" type="number" onchange='Util.priceBuy()' placeholder="" class="form-control order-entry-data label-input-label order-exchange-rate price-market-Buy"
+                                        >
+                                    <div id=":1h.order_entry_price_sign" class="input-group-addon advanced-order-entry-price-sign">
+                                        <span class="pair-currency">ETH</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <!-- .form-group -->
+                            <div class="form-group uniform-control-holder">
+                                <label for="order_entry_amount_bid" class="order-form__label order-entry-label">Amount:</label>
+                                <div class="input-group">
+                                    <input id="order_entry_amount_bid" name="amount" type="number" value="" placeholder="0.00" oninput="Util.amountBuy()" class="form-control order-entry-data amount-order input-Buy"
+                                        >
+                                    <div id=":1h.order_entry_amount_sign" class="input-group-addon advanced-order-entry-amount-sign">
+                                        <span class="pairCoinFirst">BTC</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <div class="form-group uniform-control-holder">
+                                <label for="order_entry_total_bid" class="order-form__label order-entry-label">Total:</label>
+                                <div class="input-group">
+                                    <input id="order_entry_total_bid" style="text-align: right;" name="total" type="number" value="" class="form-control label-input-label input-Buy"
+                                        data-uniform-label="Total" required="" placeholder="0.00" oninput="Util.totalBuy()">
+                                    <div id=":1h.order_entry_price_sign" class="input-group-addon advanced-order-entry-price-sign">
+                                        <span class="pairCoinSecond">ETH</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group uniform-control-holder" >
+                                    <div class="col-12" style="text-align: right;font-size: 14px">
+                                        <span>Fee (0.20%):</span>
+                                        <span id="order_entry_fee_buy" style="text-align: right;">0.00</span>
+                                        <span style="text-align: right;" class="pairCoinFirst">ETH</span>
+                                    </div>
+                                </div>
+                        </div>
+                        <footer class="form-group uniform-control-holder">
+                            <input id=":1h.order_entry_client_id" name="client_id" type="text" value="" class="form-control label-input-label" label="Client ID"
+                                data-uniform-label="Client ID" style="display:none" disabled="" placeholder="Client ID" aria-label="Client ID">
+                            <%if (role == "guest") { %>
+                                <center><div class="s1lt5gnu-3 cjoFjw">
+                                    <a style="color:#fd961a" onclick="getPage('/login')">Log in</a> or 
+                                    <a style="color:#fd961a" onclick="getPage('/signup')">Register</a> to trade
+                                </div></center>
+                            <% }else{%>
+                                <button id=":1h.order_entry_action" class="btn btn-lg btn-success btn-execution" onclick='order_buy()' style="display: block; width: 100%;">BUY</button>
+                            <%} %>           
+                        </footer>
+                    </div>
+                   
+                </div>
+                <div id="order_entry_ask" style="" class="col-md-6 col-xs-12 uniForm" data-uniform-control-holder-class="uniform-control-holder">
+                    <!-- .order-form -->
+                    <div class="order-form">
+                        <!-- .order-form__head -->
+                        <header class="order-form__head">
+                            <h4 class="order-form__title order-form__sell">
+                                <i class="glyphicon glyphicon-shopping-cart"></i> Sell
+                                <span class="pairCoinFirst">ETH</span>
+                            </h4>
+                            <%if (role != "guest") { %>
+                                <div id=":1i.order_entry_available_badge" class="order-form__balance">
+                                        Available(
+                                        <span class="pairCoinFirst">BTC</span>):&nbsp;
+                                        <strong id=":1i.order_entry_available" class="avaiable_balance_sell" data-model-key="formatted_available_balance_5:90000002_BTC" data-blink-class="balance-info-blink">0.00000</strong>
+                                    </div>
+                            <% }%>     
+                            
+                        </header>
+                        <!-- /.order-form__head -->
+                        <!-- .order-form__mid -->
+                        <div class="order-form__mid">
+                            <!-- .form-group -->
+                            <div class="form-group uniform-control-holder">
+                                <label for="order_entry_price_sell" class="order-form__label order-entry-label">Price:</label>
+                                <div class="input-group">
+                                    <input id="order_entry_price_sell" name="price" type="number" oninput="Util.priceSell()" placeholder="" class="form-control order-entry-data label-input-label order-exchange-rate price-market-Sell"
+                                        required="">
+                                    <div id=":1i.order_entry_price_sign" class="input-group-addon advanced-order-entry-price-sign">
+                                        <span class="pair-currency"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <!-- .form-group -->
+                            <div class="form-group uniform-control-holder">
+                                <label for="order_entry_amount_sell" class="order-form__label order-entry-label">Amount:</label>
+                                <div class="input-group">
+                                    <input id="order_entry_amount_sell" name="amount" type="number" value="" placeholder="0.00" oninput="Util.amountSell()" class="form-control order-entry-data label-input-label amount-order input-Sell"
+                                        >
+                                    <div id=":1i.order_entry_amount_sign" class="input-group-addon advanced-order-entry-amount-sign">
+                                        <span class="pairCoinFirst">BTC</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <div class="form-group uniform-control-holder">
+                                <label for=":order_entry_total_sell" class="order-form__label order-entry-label">Total:</label>
+                                <div class="input-group">
+                                    <input id="order_entry_total_sell" style="text-align: right;" name="total" oninput="Util.totalSell()" type="number" value="" class="form-control label-input-label input-Sell"
+                                        required="true" placeholder="0.00">
+                                    <div id=":1i.order_entry_price_sign" class="input-group-addon advanced-order-entry-price-sign">
+                                        <span class="pairCoinSecond">ETH</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group uniform-control-holder" >
+                                <div class="col-12" style="text-align: right;font-size: 14px">
+                                    <span>Fee (0.20%):</span>
+                                    <span id="order_entry_fee_sell" style="text-align: right;">0.00</span>
+                                    <span style="text-align: right;" class="pairCoinSecond">ETH</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <footer class="form-group uniform-control-holder">
+                            <input id=":1i.order_entry_client_id" name="client_id" type="text" value="" class="form-control label-input-label" label="Client ID"
+                                data-uniform-label="Client ID" style="display:none" disabled="" placeholder="Client ID" aria-label="Client ID">
+                            <%if (role == "guest") { %>
+                                <center>
+                                <div class="s1lt5gnu-3 cjoFjw">
+                                        <a style="color:#fd961a" onclick="getPage('/login')">Log in</a> or 
+                                        <a style="color:#fd961a" onclick="getPage('/signup')">Register</a> to trade
+                                    </div></center>
+                            <% }else{%>
+                                <button id=":1i.order_entry_action" onclick='order_sell()' class="btn btn-lg btn-danger btn-execution" style="display: block; width: 100%;">SELL</button>
+                            <%} %>           
+                        </footer>
+                    </div>
+                    <!-- /.order-form__bot -->
+                    <!-- /.order-form -->
+                </div>
+                <%if (role != "guest") { %>
+                    <div style="" class="row locked-balance-display">
+                            <h5 class="col-md-6 col-xs-12">
+                                <span style="font-weight:300">You are buying a total of </span>
+                                <span id="locked_buy_account" class="bitex-model" data-model-key="formatted_locked_balance_5:90000002_USD" data-blink-class="balance-info-blink"
+                                    data-amount="37210.00"> 0.00000000
+                                    
+                                </span>
+                                <span class="pairCoinFirst">ETH</span>
+                                    <span style="font-weight:300">in the session</span>
+                            </h5>
+                            <h5 class="col-md-6 col-xs-12">
+                                <span style="font-weight:300">You are selling a total of </span>
+                                <span id="locked_sell_account" class="bitex-model" data-amount='0.00000000' data-model-key="formatted_locked_balance_5:90000002_BTC"
+                                    data-blink-class="balance-info-blink">0.00000000
+                                    
+                                </span>
+                                <span class="pairCoinFirst">ETH</span>
+                                <span style="font-weight:300">in the session</span>
+                            </h5>
+                        </div>
+                <% }%>       
+               
+            </div>
+            <!-- /.order -->
+
+            <!-- .order -->
+            <div class="col-md-12 col-xs-12" style="padding: 0px;border-bottom: 0;height:inherit;">
+                <!-- .order__cell -->
+                <!-- <div class="btn btn-default btn-show-cum-qty"> -->
+                <!-- Cumulative -->
+                <!-- </div> -->
+                <!-- <div class="btn btn-default btn-show-fees"> -->
+                <!-- Fees -->
+                <!-- </div> -->
+                <div id="id_order_book_bid_content" class="order" style="display: block">
+                    <div class="orders">
+                        <!-- bid -->
+
+                        <!-- .orders__head -->
+                        <header class="orders__head" style="background-color: #302e2e">
+                            
+                            <h4 class="orders__title col-xs-12 orders__title_center" style="font-size: 16px; text-align: left">ASK</h4>
+                            
+                        </header>
+                        <!-- /.orders__head -->
+                        <!-- .orders__body -->
+                        <div class="orders__body">
+                            <!-- .table-responsive -->
+                            <div class="table-responsive">
+                                <!-- .orders-table -->
+                                <table class="orders-table table" id="table_ask_otc">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 30%">Price (
+                                                <span class="pair-currency"></span>)</th>
+                                            <th style="width: 20%">Vol(
+                                                <span class="pairCoinFirst">BTC</span>)</th>
+                                            <th style="width: 10%">Seller</th>
+                                            <th style="width: 10%">Method</th>
+                                            <th style="">Time</th>
+                                            <th style="width: 10%">Buy</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="max-height: 400px; overflow: scroll;">
+
+                                    </tbody>
+                                </table>
+
+                                <!-- /.orders-table -->
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- end bid -->
+                        <!-- between -->
+
+                        <!-- end between -->
+                        <!-- ask -->
+                        <header class="orders__head" style="background-color: #302e2e">
+                            
+                            <h4 class="orders__title col-xs-12 orders__title_center" style="font-size: 16px; text-align: left">BID</h4>
+                            
+                        </header>
+                        <div class="orders__body">
+                            <!-- .table-responsive -->
+                            <div class="table-responsive">
+                                <!-- .orders-table -->
+                                <table class="orders-table table" id='table_bid_otc'  >
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 30%">Price (
+                                                <span class="pair-currency"></span>)</th>
+                                            <th style="width: 20%">Vol(
+                                                <span class="pairCoinFirst">BTC</span>)</th>
+                                            <th style="width: 10%">Buyer</th>
+                                            <th style="width: 10%">Method</th>
+                                            <th style="">Time</th>
+                                            <th style="width: 10%">Sell</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="max-height:425px;overflow-y:auto;">
+
+                                    </tbody>
+                                </table>
+                                <!-- /.orders-table -->
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- <header class="orders__head">
+                                    <div class="row">
+                                        <h4 class="orders__title col-xs-6 orders__title_center ">BID</h4>
+                                    </div>
+                                </header> -->
+                        <!-- end ask -->
+                        <!-- /.orders__body -->
+                    </div>
+                </div>
+                <!-- /.order__cell -->
+            </div>
+
+            <!-- /. My order -->
+            <!-- .order__cell -->
+            <div id=":2y.grid" class="fuelux  bayyadiv" style="width:100%;padding-top: 15px; border: 0">
+                <table class="table table-bordered datagrid datagrid-stretch-header">
+                    <thead class="orders__head" style="background-color: #302e2e;">
+                        <tr>
+                            <th colspan="6">
+                                <span class="datagrid-header-title pull-left">
+                                    <h4 class="orders__title col-xs-12 orders__title_center" style="font-size: 16px; text-align: left">My open orders</h4>
+                                </span>
+                                <div class="datagrid-header-left pull-left" style="display: none;">
+                                    <div class="input-group search datagrid-search">
+                                        <input type="text" class="form-control" placeholder="undefined">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-white">
+                                                <i class="glyphicon glyphicon-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- <div class="datagrid-header-right pull-right">
+                                    <div class="select filter datagrid-filter" data-resize="auto">
+                                        <button type="button" data-toggle="dropdown" class="btn dropdown-toggle toggle">
+                                            <span class="dropdown-label" style="width: 111px;">All</span>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li data-value="has_leaves_qty eq 1">
+                                                <a onclick="sort_open_matching()">Open</a>
+                                            </li>
+                                            <li data-value="has_cum_qty eq 1">
+                                                <a onclick="sort_fill_matching()">Filled</a>
+                                            </li>
+                                            <li data-value="has_cxl_qty eq 1">
+                                                <a onclick="sort_cancel_matching()">Cancelled</a>
+                                            </li>
+                                            <li data-value="has_cxl_qty eq 1">
+                                                <a onclick="sort_all_matching()">All</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div> -->
+                            </th>
+                        </tr>
+
+                    </thead>
+                </table>
+                <%if (role != "guest") { %>
+                    <div class="datagrid-stretch-wrapper">
+                        
+                            <table class="table table-bordered datagrid" id='all-order'>
+                            <thead>
+                                <tr>
+                                    <th data-property="OrderDate">Date/Time</th>
+                                    <th data-property="Side">Description</th>
+                                    <th data-property="OrdStatus">Status</th>
+                                    <th data-property="AvgPx">Price</th>
+                                    <th data-property="Volume">Total</th>
+                                    <th data-property="ClOrdID">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <table class="table table-bordered datagrid datagrid-stretch-footer">
+                        <tfoot>
+                            <tr>
+                                <th colspan="4">
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-3">
+                                            <div class="datagrid-footer-left" style="visibility: visible;">
+                                                <div class="grid-controls">
+                                                    <span>
+                                                        <span class="grid-start">1</span> -
+                                                        <span class="grid-end">20</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-9">
+                                            <div class="datagrid-footer-right" style="visibility: visible;">
+                                                <div class="grid-pager pull-right">
+                                                    <button type="button" class="btn btn-outline grid-refresh">
+                                                        <i class="glyphicon glyphicon-refresh"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline grid-prevpage">
+                                                        <i class="glyphicon glyphicon-chevron-left"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline grid-nextpage">
+                                                        <i class="glyphicon glyphicon-chevron-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                <% }else{ %>
+                <div>
+                    <table class="table table-bordered datagrid" id='all-order'>
+                        <thead>
+                            <tr>
+                                <th data-property="OrderDate">Date/Time</th>
+                                <th data-property="Side">Description</th>
+                                <th data-property="OrdStatus">Status</th>
+                                <th data-property="AvgPx">Price</th>
+                                <th data-property="Volume">Total</th>
+                                <th data-property="ClOrdID">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+
+                    </table>
+                </div>
+                <% } %>
+            </div>
+            <!-- /.order__cell -->
+        </div>
+        <!-- /.page__body -->
+    </div>
+    <!-- /#offerbook -->
+
+</div>
+<!-- /.page-dashboard -->
+<div id="order_trade" class="modal fade" role="dialog" tabindex="0" style="left: 0px; top: 50px;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-title-draggable">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="order-title">Information Order</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row-fluid">
+                    <p id='noti_buy' style='display: none'>You don't have enough funds for this operation.</p>
+                    <!-- Đồng -->
+                    <table class="table table-bordered" id="info_order">
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button name="cancel" class="btn" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function (e) {
+        // $(".amount-order").focus(function(){
+        //     $(this).val('');
+        // })
+        OTC.reload_bid_ask_and_my_order()
+        // var socket = io('http://' + document.domain + ':' + location.port + '/pre_trade/order');
+    })
+</script>

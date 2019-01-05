@@ -1,0 +1,183 @@
+<!-- Template render for Wallet -->
+<script id="wallet_child_crypto" type="text/template">
+    <div class="form-group" style="padding-left:18px;">
+        <center>
+            <div class="form-group" style="width: 100%;">
+                <div class="input-group" style="width: 100%">
+                    <button class="btn" onclick="copyClipboard(1)" style="padding: 7px 35px">
+                        <i class="glyphicon glyphicon-copy" style="font-size: 29px;cursor: pointer;"></i>
+                    </button>
+                    <input id="address_btc_new" value="{{subkey}}" type="text" class="withdraw-field form-control label-input-label" size="16"
+                        name="address_btc_new" style="width:80%;background-color:#3333 " placeholder="" readonly="">
+                </div>
+                <div style="border:1px solid #2f2f2f">
+                    <p>Fee deposit:
+                        <strong>0.0005 BTC</strong>
+                    </p>
+                    <p>Address above only accept BTC currency</p>
+                    <img style="padding: 0em 5em" src="https://chart.googleapis.com/chart?chs=300x300&amp;chf=bg,s,FFFFFF00&amp;cht=qr&amp;choe=UTF-8&amp;{{subkey}}">
+                    <p style="text-align: left;padding-left: 2em;">
+                        <strong>Account Address:</strong>
+                        {{subkey}}
+                    </p>
+                    <!-- <p style="text-align: left;padding-left: 2em;"><strong>Description:</strong> This is open account BTC </p> -->
+                    <p style="text-align: left;padding-left: 2em;">
+                        <strong>Currency:</strong>
+                        {{currency}}
+                    </p>
+                    <p style="text-align: left;padding-left: 2em;">
+                        <strong>Balance: </strong>
+                        {{balance}} {{currency}}
+                    </p>
+                </div>
+            </div>
+        </center>
+    </div>
+</script>
+<script id="wallet_account_vnd" type="text/template">
+    <div class="form-group" style="padding-left:18px;">
+        <div class="form-group" style="width: 100%;">
+
+            <p>
+                <strong id="">Account Number: </strong>
+                {{account_no}}
+            </p>
+            <p>
+                <strong>Currency: </strong> {{currency}}
+
+            </p>
+            <p>
+                <strong>Your Balance: </strong> {{balance}}
+
+            </p>
+            <hr>
+            <p>
+                <h5>
+                    <span><i class="glyphicon glyphicon-warning-sign" style="font-size: 15px; margin: 5px" title="warning" ></i>You need to tranfer money to the below account with exactly information</span>
+                </h5>
+            </p>
+            <div style="border-style: dotted;padding: 10px;box-shadow: 2px">
+                <p>
+                    <strong>Account Number Deposit: </strong>
+                    0301000362585
+                </p>
+                <p>
+                    <strong>Account Name Deposit: </strong>
+                    VU XUAN HUY
+                </p>
+                <p>
+                    <strong>Bank Name: </strong>
+                    VietcomBank-JSC Bank for Foreign Trade of Vietnam
+                </p>
+
+                <div class="row" style="padding:5px 0px;">
+                        <span>
+                                <strong class="col-lg-4">Key Deposit: </strong>
+                                <input class="col-lg-4 withdraw-field label-input-label key-code" readonly style="letter-spacing:4px; border-radius:30px;font-size:18px" id="otp_code">
+                                <i style="font-size: 23px;cursor: pointer;margin-left: 10px" class="glyphicon glyphicon-copy" title="Copy" onclick="copyCode()"></i>
+                                <i style="font-size: 23px;cursor: pointer;margin-left: 10px;" class="glyphicon glyphicon-refresh" title="Refresh" onclick="getNewOTPCode()"></i>
+                        </span>
+                    <p id="notify_key_code" style="padding: 12px;"></p>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</script>
+<!-- Template render transaction for wallet page -->
+<script id="transaction_template" type="text/template">
+    {{#transaction}}
+    <tr class="order-manager-new">
+        <td>{{account_no}}</td>
+        <td>{{deposit_method}}</td>
+        <td>{{value}}</td>
+        <td>{{currency}}</td>
+        <td>{{createAt}}</td>
+    </tr>
+    {{/transaction}}
+</script>
+<!-- Template render notification -->
+<script id="template_warning" type="text/template">
+    {{#status}}  <div class="alert alert-success" id="noti{{order_id}}">  {{/status}}
+    {{^status}} <div class="alert alert-info" id="noti{{order_id}}"> {{/status}}
+        <button class="close pull-right" onclick="$(this).parent().remove();">×</button>
+        <span>   
+            {{#status}} Order <strong>{{order_id}} </strong> {{side}} success{{#status}} {{log}} {{/status}}  {{/status}}
+            {{^status}} {{log}} {{/status}}
+            
+        </span>
+    </div>
+</script>
+<!-- Template render notification invalid -->
+<script id="template_warning_invalid" type="text/template">
+    <div class="alert alert-info" id="noti{{order_id}}invalid">
+        <button class="close pull-right" onclick="$(this).parent().remove();">×</button>
+        <span>   
+            Order <strong>Invalid </strong> {{message}}
+        </span>
+    </div>
+</script>
+<script id="verify_transaction" type="text/template">
+    {{#transaction}}
+    <tr class="order-manager-new">
+        <td class="order-manager-order-date">{{datetime}}</td>
+        <td class="order-manager-description">{{user_name}}</td>
+        <td class="order-manager-status">{{account_no}}</td>
+        <td class="order-manager-avg-price">{{account_type}}</td>
+        <td class="order-manager-volume">{{account_balance}}</td>
+        <td class="order-manager-order-date">{{value}}</td>
+        <td class="order-manager-description">{{to}}</td>
+        <td class="order-manager-status">{{email}}</td>
+        <td class="order-manager-avg-price">{{phone}}</td>
+        <td class="order-manager-volume">{{status}}</td>
+        <td class="order-manager-actions">
+            <select class="form-control" style=" width: -webkit-fill-available;">
+                <option value="depo">Accept</option>
+                <option value="with">Reject</option>
+            </select>
+        </td>
+    </tr>
+    {{/transaction}}
+
+</script>
+
+<script id="listkyc" type="text/template">
+    {{#kyc}}
+    <tr class="order-manager-new">
+        <td>{{id}}</td>                
+        <td>{{datetime}}</td>
+        <td>{{full_name}}</td>
+        <td>{{phone}}</td>
+        <td>{{id_verify}}</td>
+        <td>
+            <button class="btn" id="button_{{id}}" data-id={{id}} data-img_front={{image_front_verify}} data-img_selfie={{image_selfie_verify}}
+            data-img_with={{image_with_verify}} data-img_alternative={{image_alternative}}  
+            data-id={{id}} data-fullname="{{full_name}}" data-phone={{phone}} data-id_verify={{id_verify}} 
+            onclick="detailKyc(this)"
+            >Detail</button
+        </td>
+    </tr>
+    {{/kyc}}
+
+</script>
+<script id="withdraw_warning" type="text/template">
+    <div class="alert alert-info" id="noti{{notifi_id}}">
+        <button class="close pull-right" onclick="$(this).parent().remove();">×</button>
+        <span>
+            <strong>{{message}}</span>
+    </div>
+</script>
+
+<script id="order-history" type="text/template">
+    {{#all_report}}
+    <tr class="order-manager-fill">
+        <td class="order-manager-order-date">{{TransactTime}}</td>
+        <td class="order-manager-description">{{Description}}</td>
+        <td class="order-manager-status">{{OrdStatus}}</td>
+        <td class="order-manager-avg-price">{{Price}}</td>
+        <td class="order-manager-volume">{{Volume}}</td>
+        <td class="order-manager-actions"></td>
+    </tr>
+    {{/all_report}}
+
+</script>

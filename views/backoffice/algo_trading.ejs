@@ -1,0 +1,197 @@
+<% layout ("../layout/layout_backoffice") -%>
+    <div id="sidebar_content" class="col-md-8 page__sidebar_content">
+        <!-- .page-dashboard -->
+        <div class="page-dashboard">
+
+            <!-- #algotrading -->
+            <div id="algotrading" class="bitex-view bitex-view-active" style="">
+                <!-- .page__head -->
+                <header class="page__head section-title">
+                    <h1 class="page__title h2 bitex-view-title">
+                        <i class="glyphicon glyphicon-cog"></i> Algorithm Trading
+                    </h1>
+                </header>
+                <!-- /.page__head -->
+
+                <!-- .page__body -->
+                <div class="page__body bitex-view-content">
+                    <form id=":22.algo_form" class="algo-selector page__section_white page__padding">
+                        <!-- .algo -->
+                        <div class="algo">
+                            <!-- .algo__head -->
+                            <div class="algo__head">
+                                <label class="algo__label" for=":22.algo_filename">Algorithm</label>
+                            </div>
+                            <!-- /.algo__head -->
+                            <!-- .algo__body -->
+                            <div class="algo__body">
+                                <input id=":22.algo_filename" type="text" class="algo__input form-control" disabled="disabled">
+                                <button id=":22.algo_btn_clear" type="button" class="algo__btn btn btn-danger" style="display:none;">
+                                    <i class="glyphicon glyphicon-remove"></i> Clear</button>
+                                <div id=":22.algo_btn_browse_container" class="algo__btn algo__btn-file btn btn-success"
+                                    style="">
+                                    <i class="glyphicon glyphicon-folder-open"></i>&nbsp;
+                                    <span id=":22.algo_btn_browse">Browse</span>
+                                    <input id=":22.algo_file" type="file" accept=".algo" style="">
+                                </div>
+                            </div>
+                            <!-- /.algo__body -->
+                            <!-- .algo__foot -->
+                            <div class="algo__foot">
+                                <a href="https://github.com/blinktrade/algorithm-trading/" target="_blank">Understand how the algorithm trading works</a>
+                            </div>
+                            <!-- /.algo__foot -->
+                        </div>
+                        <!-- /.algo -->
+                    </form>
+                    <div></div>
+                    <div id=":24.grid" class="fuelux datagrid" style="width:100%;">
+                        <table class="table table-bordered datagrid datagrid-stretch-header">
+                            <thead>
+                                <tr>
+                                    <th colspan="9">
+                                        <span class="datagrid-header-title pull-left">
+                                            <strong>My open orders</strong>
+                                        </span>
+                                        <div class="datagrid-header-left pull-left" style="display: none;">
+                                            <div class="input-group search datagrid-search">
+                                                <input type="text" class="form-control" placeholder="undefined">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-white">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="datagrid-header-right pull-right">
+                                            <div class="select filter datagrid-filter" data-resize="auto">
+                                                <button type="button" data-toggle="dropdown" class="btn dropdown-toggle">
+                                                    <span class="dropdown-label" style="width: 111px;">Open</span>
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li data-value="has_leaves_qty eq 1">
+                                                        <a href="#">Open</a>
+                                                    </li>
+                                                    <li data-value="has_cum_qty eq 1">
+                                                        <a href="#">Filled</a>
+                                                    </li>
+                                                    <li data-value="has_cxl_qty eq 1">
+                                                        <a href="#">Cancelled</a>
+                                                    </li>
+                                                    <li data-value="all">
+                                                        <a href="#">All</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th data-property="OrderDate" style="width: 116px;">Date/Time</th>
+                                    <th data-property="OrdStatus" style="width: 55px;">Status</th>
+                                    <th data-property="Side" style="width: 43px;">Side</th>
+                                    <th data-property="OrderQty" style="width: 89px;">Qty</th>
+                                    <th data-property="Price" style="width: 98px;">Price</th>
+                                    <th data-property="LeavesQty" style="width: 89px;">Leaves Qty</th>
+                                    <th data-property="CumQty" style="width: 90px;">Cum Qty</th>
+                                    <th data-property="AvgPx" style="width: 76px;">Average Price</th>
+                                    <th data-property="ClOrdID" style="width: 84px;">Actions</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="datagrid-stretch-wrapper" style="height:360px;">
+                            <table class="table table-bordered datagrid">
+                                <tbody>
+                                    <tr class="order-manager-new" id=":24_9006920">
+                                        <td class="order-manager-order-date" style="width: 116px;">5/21/2018, 10:15:59 AM</td>
+                                        <td class="order-manager-status" style="width: 55px;">NEW</td>
+                                        <td class="order-manager-side" style="width: 43px;">BUY</td>
+                                        <td class="order-manager-order-qty" style="width: 89px;">0.00700000</td>
+                                        <td class="order-manager-price" style="width: 98px;">30000.00000</td>
+                                        <td class="order-manager-leaves_qty" style="width: 89px;">0.00700000</td>
+                                        <td class="order-manager-cum-qty" style="width: 90px;">0.00000000</td>
+                                        <td class="order-manager-avg-price" style="width: 76px;">$ 30,000.00</td>
+                                        <td class="order-manager-actions" style="width: 84px;">
+                                            <button class="btn btn-sm btn-danger" data-action="cancel" data-client-order-id="9006920"
+                                                data-order-id="1459030503293">cancel</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="order-manager-new" id=":24_1852898">
+                                        <td class="order-manager-order-date">5/21/2018, 2:32:23 AM</td>
+                                        <td class="order-manager-status">NEW</td>
+                                        <td class="order-manager-side">BUY</td>
+                                        <td class="order-manager-order-qty">1.00000000</td>
+                                        <td class="order-manager-price">8000.00000</td>
+                                        <td class="order-manager-leaves_qty">1.00000000</td>
+                                        <td class="order-manager-cum-qty">0.00000000</td>
+                                        <td class="order-manager-avg-price">$ 8,000.00</td>
+                                        <td class="order-manager-actions">
+                                            <button class="btn btn-sm btn-danger" data-action="cancel" data-client-order-id="1852898"
+                                                data-order-id="1459030503292">cancel</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="order-manager-new" id=":24_5639078">
+                                        <td class="order-manager-order-date">5/20/2018, 5:28:30 AM</td>
+                                        <td class="order-manager-status">NEW</td>
+                                        <td class="order-manager-side">BUY</td>
+                                        <td class="order-manager-order-qty">1.00000000</td>
+                                        <td class="order-manager-price">29000.00000</td>
+                                        <td class="order-manager-leaves_qty">1.00000000</td>
+                                        <td class="order-manager-cum-qty">0.00000000</td>
+                                        <td class="order-manager-avg-price">$ 29,000.00</td>
+                                        <td class="order-manager-actions">
+                                            <button class="btn btn-sm btn-danger" data-action="cancel" data-client-order-id="5639078"
+                                                data-order-id="1459030503289">cancel</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <table class="table table-bordered datagrid datagrid-stretch-footer">
+                            <tfoot>
+                                <tr>
+                                    <th colspan="4">
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-3">
+                                                <div class="datagrid-footer-left" style="visibility: visible;">
+                                                    <div class="grid-controls">
+                                                        <span>
+                                                            <span class="grid-start">1</span> -
+                                                            <span class="grid-end">20</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-9">
+                                                <div class="datagrid-footer-right" style="visibility: visible;">
+                                                    <div class="grid-pager pull-right">
+                                                        <button type="button" class="btn btn-outline grid-refresh">
+                                                            <i class="glyphicon glyphicon-refresh"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline grid-prevpage">
+                                                            <i class="glyphicon glyphicon-chevron-left"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline grid-nextpage">
+                                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.page__body -->
+            </div>
+            <!-- /#algotrading -->
+
+
+        
+            <!-- /#verification -->
+        </div>
+        <!-- /.page-dashboard -->
+    </div>

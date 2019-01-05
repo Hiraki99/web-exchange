@@ -1,0 +1,374 @@
+<link rel="stylesheet" href="/css/pace-theme-minimal.css" />
+<script src="/js/front_end/back_office/kyc.js" ></script>
+<div class="pricing-tables-content">
+    <div role="document" style="padding: 10 0px;">
+        <div class="modal-content">
+            <div class="modal-header modal-title-draggable">
+                <center>
+                    <p>Trạng thái xác thực:
+                            <% if(status ==-1){%> 
+                                <strong class="modal-title" id="status_verify_info_user">CHƯA XÁC MINH</strong>
+                            <%}%>
+
+                            <% if(status ==1){%> 
+                                <strong class="modal-title" id="status_verify_info_user">XÁC THỰC THÔNG TIN THÀNH CÔNG</strong>
+                            <%}%>
+                            <% if(status ==0){%> 
+                                <strong class="modal-title" id="status_verify_info_user">ĐANG CHỜ XÁC THỰC THÔNG TIN</strong>
+                            <%}%>
+                            <% if(status ==2){%> 
+                                <strong class="modal-title" id="status_verify_info_user">XÁC THỰC THÔNG TIN THÀNH CÔNG</strong>
+                            <%}%>
+    
+                            
+
+                            
+                        
+                    </p>
+
+                </center>
+            </div>
+            <div class="modal-body">
+                <div id="12a3euaj8xzn_form" class="form-horizontal uniForm" data-deposit-status="prepare" data-uniform-control-holder-class="form-group">
+                    <fieldset id="account_vnd" style="display: block">
+
+                        <div class="withdraw-methods">
+
+
+                            <div class="form-group" style="width: 100%">
+
+                                <div style="padding: 2em">
+                                    <p style="margin-bottom:0px;padding: 8px 0px; ">Hình ảnh xác minh cần thỏa mãn các điều kiện sau</p>
+                                    <ul>
+                                        <li href="#">Chưa qua chỉnh sửa</li>
+                                        <li href="#">Có độ phân giải tối thiểu 2 megapixels</li>
+                                        <li href="#">Rõ nét, không bị mờ</li>
+                                    </ul>
+                                    <p>Hình ảnh xác minh không thoả mãn các điều kiện trên sẽ không bao giờ được chấp nhận</p>
+                                </div>
+
+                            </div>
+
+
+
+
+
+                        </div>
+                    </fieldset>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <% if(status !=-1){%> 
+        <input id="id_kyc" type="text" style='display:none' class="withdraw-field form-control label-input-label" size="16" style="background-color: #3333"
+                                            value="<%-id_kyc%>">
+    <%}%>
+    <h5 class="sidebar-box__title title_kyc" style='display:none'>Để được xác thực tài khoản, bạn cần tải lên:</h5>
+    
+    <h5 class="sidebar-box__title" style='display:none'>Tài liệu của bạn đã được tải lên.</h5>
+
+    <div role="document" style="padding: 10 0px;display:none;">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div id="12a3euaj8xzn_form" class="form-horizontal uniForm" data-deposit-status="prepare" data-uniform-control-holder-class="form-group">
+                    <fieldset id="account_vnd" style="display: block">
+
+                        <div class="withdraw-methods">
+
+
+                            <div class="form-group" style="width: 100%">
+
+                                <div style="padding: 2em">
+                                    <p>Tài liệu của bạn hiện đang được phân tích. Xin đừng đóng trình duyệt. Điều này có thể
+                                        mất 2-3 phút.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <% if(status ==-1){%> 
+        <form id="upload-photos" method="post" action="/account/add-kyc" enctype="multipart/form-data">
+    <%}
+    else {%>
+        <form id="upload-photos" method="post" action="/account/update-kyc" enctype="multipart/form-data">
+     <%}%>
+    
+    <% 
+        if (status ==-1||(typeof (image_front_verify) != "undefined" && image_front_verify)  || (typeof (full_name) != "undefined" && full_name)  || (typeof (id_verify) != "undefined" && id_verify)) { %> 
+            <div id="step1" role="document" class="tab" style="padding: 10 0px;display:none">
+                <div class="modal-content">
+                        <div class="modal-body">
+                            <div id="12a3euaj8xzn_form" class="form-horizontal uniForm" data-deposit-status="prepare" data-uniform-control-holder-class="form-group">
+                                <fieldset id="account_vnd" style="display: block">
+                                    <div class="error"></div>
+                                    <div class="withdraw-methods">
+            
+                                        <center>
+                                            <div class="form-group" style="width: 80%;">
+                                                <img src="/images/kyc/id.png">
+                                                <h3 style="margin-bottom:0px;padding: 8px 0px; ">TÀI LIỆU ĐỊNH DANH</h3>
+                                                <p>Vui lòng cung cấp ảnh chụp bản gốc chứng minh thư, hộ chiếu hoặc bằng lái xe của bạn.
+                                                    Đối với chứng minh thư, vui lòng gửi cả 2 bản chụp mặt trước và mặt sau.
+                                                </p>
+                                            </div>
+                                        </center>
+                                        <p>Tên đầy đủ:
+                                            <a style="cursor: pointer;" onclick="openID()" id="fullname">
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </a>
+                                            <input hidden type="text" name="fullname">
+                                        </p>
+                                        <p>Mã số của CMT/Hộ chiếu/GPLX:
+                                            <a style="cursor: pointer;" onclick="openID()" id="id_verify">
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </a>
+                                            <input hidden type="text" name="id_verify">
+                                        </p>
+                                        <p>Phone:
+                                            <a style="cursor: pointer;" onclick="openID()" id="phone_number">
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </a>
+                                            <input hidden type="text" name="phone_number">
+                                        </p>
+                                        
+                                        <label class="btn btn-block btn-default" for="attachment_1" aria-disabled="false">
+                                            Tải lên
+                                        </label>
+                                        <input type="file" class="dz-hidden-input" accept=".jpg, .jpeg, .png" id="attachment_1" data-parent="step1" onchange='getImg(this)'
+                                                name="attachment_1" autocomplete="off" style="display: none;">        
+                                        
+                                    </div>
+                                </fieldset>
+            
+                            </div>
+                        </div>
+            
+                </div>
+            </div>
+        <%}
+    %>
+        
+    <% 
+    if (status ==-1|| (typeof (image_selfie_verify) != "undefined" && image_selfie_verify)) { %> 
+        <div id="step2" role="document" class="tab" style="padding: 10 0px;display: none;">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="12a3euaj8xzn_form" class="form-horizontal uniForm" data-deposit-status="prepare" data-uniform-control-holder-class="form-group">
+                            <fieldset id="account_vnd" style="display: block">
+                                <div class="error"></div>
+                                <div class="withdraw-methods">
+        
+                                    <center>
+                                        <div class="form-group" style="width: 80%;">
+                                            <img src="/images/kyc/man_hold_primary_id.png">
+                                            <h3 style="margin-bottom:0px;padding: 8px 0px; ">ID CỦA BẠN Ở PHÍA TRƯỚC CỦA KHUÔN MẶT CỦA BẠN</h3>
+                                            <p>Ảnh của bạn giữ ID của bạn (Hộ chiếu, Driver License hoặc ID do chính phủ cấp của) bên
+                                                cạnh khuôn mặt của bạn
+                                            </p>
+                                        </div>
+                                    </center>
+        
+                                    <label class="btn btn-block btn-default" for="attachment_2" aria-disabled="false">
+                                        Tải lên
+                                    </label>
+                                    <input type="file" data-parent="step2" onchange='getImg(this)' class="dz-hidden-input" accept=".jpg, .jpeg, .png" id="attachment_2"
+                                        name="attachment_2" autocomplete="off" style="display: none;">
+                                </div>
+                            </fieldset>
+        
+                        </div>
+                    </div>
+        
+                </div>
+        </div>
+    <%} 
+    %>
+    
+    <% 
+    if (status ==-1||(typeof (image_with_verify) != "undefined" && image_with_verify)) { %> 
+        <div id="step3" role="document" class="tab" style="padding: 10 0px;display: none;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="12a3euaj8xzn_form" class="form-horizontal uniForm" data-deposit-status="prepare" data-uniform-control-holder-class="form-group">
+                        <fieldset id="account_vnd" style="display: block">
+                            <div class="error"></div>
+                            <div class="withdraw-methods">
+    
+                                <center>
+                                    <div class="form-group" style="width: 80%;">
+                                        <img src="/images/kyc/id_over_paper.png">
+                                        <h3 style="margin-bottom:0px;padding: 8px 0px; ">ID CỦA BẠN TRÊN NỀN T_REX</h3>
+                                        <p>Ảnh của ID của bạn ở phía trước của một tờ giấy có chữ "T_REX Verification"
+                                        </p>
+                                    </div>
+                                </center>
+    
+                                <label class="btn btn-block btn-default" for="attachment_3" aria-disabled="false">
+                                    Tải lên
+                                </label>
+                                <input type="file" class="dz-hidden-input" data-parent="step3" onchange='getImg(this)' data-parent="step3" accept=".jpg, .jpeg, .png"
+                                    id="attachment_3" name="attachment_3" autocomplete="off" style="display: none;">
+                            </div>
+                        </fieldset>
+    
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    <%} 
+    %>
+
+    <% 
+    if (status ==-1||(typeof (image_alternative) != "undefined" && image_alternative)) { %>
+        <div id="step4" role="document" class="tab" style="padding: 10 0px;display: none;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="12a3euaj8xzn_form" class="form-horizontal uniForm" data-deposit-status="prepare" data-uniform-control-holder-class="form-group">
+                        <fieldset id="account_vnd" style="display: block">
+                            <div class="error"></div>
+                            <div class="withdraw-methods">
+    
+                                <center>
+                                    <div class="form-group" style="width: 80%;">
+                                        <img src="/images/kyc/id_backup.png">
+                                        <h3 style="margin-bottom:0px;padding: 8px 0px; ">TÀI LIỆU ĐỊNH DANH THỨ CẤP</h3>
+                                        <p>Vui lòng cung cấp ảnh một tài liệu định danh khác tài liệu định danh trên của bạn
+                                        </p>
+                                    </div>
+                                </center>
+    
+                                <label class="btn btn-block btn-default" for="attachment_4" aria-disabled="false">
+                                    Tải lên
+                                </label>
+                                <input type="file" class="dz-hidden-input" data-parent="step4" onchange='getImg(this)' data-parent="step4" accept=".jpg, .jpeg, .png"
+                                    id="attachment_4" name="attachment_4" autocomplete="off" style="display: none;">
+                            </div>
+                        </fieldset>
+    
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    <%} 
+    %>
+
+    </form>
+    
+    
+    
+    <div class="verify-upload-document" role="document" style="padding: 10 0px;display: none;">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div id="12a3euaj8xzn_form" class="form-horizontal uniForm" data-deposit-status="prepare" data-uniform-control-holder-class="form-group">
+                    <fieldset id="account_vnd" style="display: block">
+
+                        <div class="withdraw-methods">
+
+
+                            <div class="form-group" style="width: 100%">
+
+                                <div style="padding: 2em">
+                                    <p>Quá trình xác minh là ngay lập tức. Nó chỉ mất 2-3 phút để tài khoản của bạn được xác
+                                        nhận.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="verify-upload-document" style="display: none;">
+        <div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p class="up-doc-subtitle">
+                        <h5>Tài liệu của bạn đã được tải lên.</h5>
+                    </p>
+                    <blockquote class="testimonial">
+                        <p>Tài liệu của bạn hiện đang được phân tích. Xin đừng đóng trình duyệt. Điều này có thể mất 2-3 phút.</p>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <img src="/images/analyzing.gif" alt="verify-analyzing">
+                    <h2 class="blink-me text-primary">Phân tích ...</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="id_verify_user" class="modal fade" role="dialog" tabindex="0" style="left: 0px; top: 5em;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-title-draggable">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Add New verify account</h4>
+            </div>
+            <div class="modal-body">
+                <div id="12a3euaj8xzn_form" class="form-horizontal uniForm" data-deposit-status="prepare" data-uniform-control-holder-class="form-group">
+
+                    <div class="withdraw-methods">
+                        <div class="withdraw-method" data-withdraw-method="TestMethod">
+                            <div class="form-group">
+                                <label class="col-xs-4 control-label">Họ tên</label>
+                                <div class="col-xs-6 col-sm-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input id="account_name" type="text" class="withdraw-field form-control label-input-label" size="16" style="background-color: #3333"
+                                            name="account_name" placeholder="">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-4 control-label">ID Passprot/CMT/GPLX</label>
+                                <div class="col-xs-6 col-sm-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input id="account_number" value="" type="text" class="withdraw-field form-control label-input-label" size="16" name="account_number"
+                                            placeholder="">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-4 control-label">Phone</label>
+                                <div class="col-xs-6 col-sm-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input id="account_phone" value="" type="text" class="withdraw-field form-control label-input-label" size="16" name="account_number"
+                                            placeholder="">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button name="ok" class="btn btn-primary" onclick="addVerifyAccount()">OK</button>
+                <button name="cancel" class="btn" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

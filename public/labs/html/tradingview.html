@@ -1,0 +1,38 @@
+<html>
+
+<head>
+</head>
+<script src="/js/libs/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="https://s3.amazonaws.com/tradingview/tv.js"></script>
+
+
+<body>
+    <script>
+        var pair_ = "ETHBTC";
+        if (localStorage.getItem("pair") != "" && localStorage.getItem("pair") != "null")
+            pair_store = localStorage.getItem("pair")
+            if(pair_store != "eth-btc")
+                pair_ = pair_store.replace('-','').toUpperCase()
+            if(pair_store == "btc-vnd"){
+                pair_ = "BTCUSDT"
+            }
+        new TradingView.widget({
+            "autosize": true,
+            "symbol": "BINANCE:" + pair_,
+            "interval": "30",
+            "timezone": "exchange",
+            "theme": "Dark",
+            "toolbar_bg": "#2f2d2d",
+            "hide_side_toolbar": true,
+            // "watchlist": [
+            //     "BINANCE:BTCUSDT",
+            //     "BINANCE:ETHBTC"
+            // ],
+            "details": false,
+            "locale": "en_US",
+            "hideideas": true
+        });
+    </script>
+</body>
+
+</html>

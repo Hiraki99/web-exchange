@@ -1,0 +1,252 @@
+<!-- .page-dashboard -->
+        <div class="page-dashboard">
+            
+            <!-- /#trading -->
+            <div id="history" class="bitex-view bitex-view-active" style="">
+                <div class="section-title">
+                    <h3 class="bitex-view-title">Orders history</h3>
+                </div>
+                <div class="content bitex-view-content">
+                    <div id=":2h.grid" class="fuelux datagrid" style="width:100%;">
+                        <table class="table table-bordered datagrid datagrid-stretch-header">
+                            <thead>
+                                <tr>
+                                    <th colspan="6">
+                                        <span class="datagrid-header-title pull-left">
+                                            <strong>My orders</strong>
+                                        </span>
+                                        <div class="datagrid-header-left pull-left" style="display: none;">
+                                            <div class="input-group search datagrid-search">
+                                                <input type="text" class="form-control" placeholder="undefined">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-white">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="datagrid-header-right pull-right">
+                                            <div class="select filter datagrid-filter" data-resize="auto">
+                                                <button type="button" data-toggle="dropdown" class="btn dropdown-toggle">
+                                                    <span class="dropdown-label" style="width: 111px;">Filled</span>
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li data-value="has_cum_qty eq 1">
+                                                        <a onclick="filter_order('Filled')">Filled</a>
+                                                    </li>
+                                                    <li data-value="has_leaves_qty eq 1">
+                                                        <a onclick="filter_order('New')" >Open</a>
+                                                    </li>
+                                                    <li data-value="has_cxl_qty eq 1">
+                                                        <a onclick="filter_order('Canceled')">Cancelled</a>
+                                                    </li>
+                                                    <li data-value="all">
+                                                        <a onclick="filter_order('All')">All</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                
+                            </thead>
+                        </table>
+                        
+                        <table class="table table-bordered datagrid" id="all-order-history">
+                            <thead>
+                                <tr>
+                                    <th data-property="OrderDate">Date/Time</th>
+                                    <th data-property="Description">Description</th>
+                                    <th data-property="OrdStatus">Status</th>
+                                    <th data-property="AvgPx">Price</th>
+                                    <th data-property="AvgPx">AllocQty</th>
+                                    <th data-property="OrdStatus">Detail</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="infor_order_trade" class="modal fade" role="dialog" tabindex="0" style="left: 0px; top: 50px;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header modal-title-draggable">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="order-title">Information Order</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row-fluid">
+                            <p id='noti_buy' style='display: none'>You don't have enough funds for this operation.</p>
+                            <!-- Đồng -->
+                            <table class="table table-bordered" id="table_order">
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button name="okie" class="btn" data-dismiss="modal">Okie</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.page-dashboard -->
+<script>
+    // var table_order = $('#all-order-history').DataTable({"searching": true});;
+    var table_order = $('#all-order-history').DataTable({"searching": true,
+    "columnDefs" : [{ type: 'de_datetime', targets: 0 }],"order": [[ 0, "desc" ]]});;
+
+    Pace.track(function () {
+        $.ajax({
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            },
+            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url: '/api/trade/otc/all-orders', // the url where we want to POST
+            dataType: 'json', // what type of data do we expect back from the server
+            // encode          : true
+        }).done(function (data) {
+            data = data["res"]
+            
+            // data = JSON.parse(data)
+            if(data.status==1){
+                data.all_report.forEach(item => {
+                    item["TransactTime"] = formatDate(item["TransactTime"]);
+                    
+                    var pair = item["Symbol"].split('/')
+                    item["Description"] = [item["Side"],Util.format_number_to_show(item["OrderQty"]),pair[0] ].join(' ')
+                    item["Volume"] = Util.format_number_to_show(parseFloat( parseFloat(item["OrderQty"])* parseFloat(item["Price"]) ).toFixed(5))
+                    
+                    item["AllocQty"] = Util.format_number_to_show(parseFloat( parseFloat(item["OrderQty"])* parseFloat(item["Price"]) - parseFloat(item["Commission"])).toFixed(5))
+                    var detail_html= `<button name="Detail" class="btn order-trade" data-data='${JSON.stringify(item)}'  onclick="detail_order(this)">Detail</button>`
+                    var fee_html;
+                    var checked = (item["Symbol"].indexOf("VND") != -1 )? true : false
+                    if(checked) item["Price"] = Util.format_number_to_show(item["Price"].toFixed(0))
+                    else item["Price"] = Util.format_number_to_show(item["Price"].toFixed(5))
+                    var final_order
+                    if(item["Side"] = "Sell"){
+                        final_order = Util.format_number_to_show((item["Price"] * item["OrderQty"]-item["Commission"]).toFixed(5)) + ' '+ pair[1]
+                    }else final_order = Util.format_number_to_show(((item["Price"])-item["Commission"]).toFixed(5)) + ' '+ pair[0]
+
+
+                    if(item["Side"]=="Sell") fee_html= `${Util.format_number_to_show(item['Commission'].toFixed(5))} ${pair[1]}`
+                    else fee_html =`${Util.format_number_to_show(item['Commission'].toFixed(5))} ${pair[0]}`
+                    // console.log(detail_html)
+                    table_order.row.add([
+                        item["TransactTime"],item["Description"],item['OrdStatus'],[item['Price'],item["Symbol"]].join(' '),final_order,detail_html
+                    ]).draw()
+                });
+            }
+            
+        });
+        
+    });
+    function detail_order(e){
+        console.log(147)
+        console.log($(e).attr("data-data"))
+        var json = JSON.parse($(e).attr("data-data"))
+        console.log(json)
+        $("#table_order > tbody").html(feedContentOrder(json));
+        $("#infor_order_trade").modal("show")
+    }
+    function feedContentOrder(json) {
+
+        var pair= json["Symbol"].split("/")
+        var checked = (json["Symbol"].indexOf("VND") != -1 )? true : false
+        var html = `<tr>
+                        <td>Order ID</td>
+                        <td>
+                            <span class="bitex-model">${json["OrderID"]}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Transaction Time: </td>
+                        <td>
+                            <span class="bitex-model">${json["TransactTime"]}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Status Order: </td>
+                        <td>
+                            <span class="bitex-model"><strong>${json["OrdStatus"]}</strong></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Amount Order</td>
+                        <td>
+                            <span class="bitex-model">${Util.format_number_to_show(json["OrderQty"])} ${pair[0]}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Type Orders</td>
+                        <td>
+                            <span class="bitex-model">${json["Side"]}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>
+                            <span class="bitex-model">${json["Side"]}  ${Util.format_number_to_show(json["OrderQty"])} ${pair[0]}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pair Trading</td>
+                        <td>
+                            <span class="bitex-model">${json["Symbol"]}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Price 
+                            <span id='symbol_order_buy'>${json["Symbol"]}</span> by your order
+                        </td>
+                        <td>
+                        <span class="bitex-model">${Util.format_number_to_show((checked) ? parseInt(json["Price"]) : json["Price"].toFixed(5)) }</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fee :</td>
+                        <td>
+                            ${
+                            (json["Side"]== "Sell") ? `<span class="bitex-model">${Util.format_number_to_show((checked) ? parseInt(json["Commission"]) : json["Commission"].toFixed(5) )} ${pair[1]}</span>`
+                             : `<span class="bitex-model">${Util.format_number_to_show((checked) ? parseInt(json["Commission"]) : json["Commission"].toFixed(5) )} ${pair[0]}</span>`}
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Order</td>
+                        <td>
+                            <span class="bitex-model">${Util.format_number_to_show(parseFloat(json["Price"] * json["OrderQty"]).toFixed(5))} ${pair[1]}</span>
+                        </td>
+                    </tr>
+                    <tr style="font-weight: bolder">
+                        <td>Final Order</td>
+                        <td>
+                            ${
+                                (json["Side"]== "Sell") ? `<span class="bitex-model">${Util.format_number_to_show((parseFloat(json["Price"] * json["OrderQty"]) - parseFloat(json["Commission"]) ).toFixed(5))} ${pair[1]}</span>`
+                                : `<span class="bitex-model">${Util.format_number_to_show((parseFloat(json["OrderQty"]) - parseFloat(json["Commission"]) ).toFixed(5))} ${pair[0]}</span>`
+                            }
+                            
+                            
+                        </td>
+                    </tr>`
+
+        return html;
+    }
+    function filter_order(status){
+        if(status == "All") table_order.column(2).search('').draw();
+        else table_order.column(2).search(status).draw();
+    }
+</script>

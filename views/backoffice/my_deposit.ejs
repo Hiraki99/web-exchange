@@ -1,0 +1,350 @@
+<% layout ("../layout/layout_backoffice") -%>
+<link rel="stylesheet" href="/css/pace-theme-minimal.css" />
+
+    <div id="sidebar_content" class="col-md-8 page__sidebar_content">
+        <!-- .page-dashboard -->
+        <div class="page-dashboard">
+
+            <!-- #deposit -->
+            <div id="deposit" class="bitex-view bitex-view-active" style="">
+                <!-- .page__head -->
+                <header class="page__head section-title page__head-float">
+                    <h1 class="page__title h2 bitex-view-title page__title-float">
+                        <i class="glyphicon glyphicon-plus"></i> My Deposits
+                    </h1>
+                    <div id="id_deposit_button_group" class="row-fluid text-right" style="">
+                        <div id=":2a.deposit_withdraw_bg" class="deposit-withdraw-button-group">
+                            <button class="btn btn-primary btn-md text-center" data-currency="USD" data-toggle="modal" onclick="openDeposit('VND')"
+                                data-action="deposit">
+                                 Deposit VND
+                                <span class="fa fa-download"></span>
+                            </button>&nbsp;
+                            <button class="btn btn-primary btn-md text-center" data-currency="BTC" data-action="deposit" data-toggle="modal" onclick="openDeposit('BTC')">
+                                 Deposit BTC
+                                <span class="fa fa-download"></span>
+                            </button>&nbsp;
+                            <button class="btn btn-primary btn-md text-center" data-currency="ETH" data-action="deposit" data-toggle="modal" onclick="openDeposit('ETH')">
+                                 Deposit ETH
+                                <span class="fa fa-download"></span>
+                            </button>&nbsp;
+                            </div>
+                    </div>
+                </header>
+                <!-- /.page__head -->
+
+                <!-- .page__body -->
+                <div class="page__body bitex-view-content">
+                    <div id="id_deposit_balances_container"></div>
+
+                    <div id="id_deposit_list"></div>
+                    <div id=":2b.grid" class="fuelux datagrid" style="width:100%;">
+                        <table class="table table-bordered datagrid datagrid-stretch-header">
+                            <thead>
+                                <tr>
+                                    <th colspan="6">
+                                        <span class="datagrid-header-title pull-left">
+                                            <strong>Deposits</strong>
+                                        </span>
+                                        <div class="datagrid-header-left pull-left">
+                                            <div class="input-group search datagrid-search">
+                                                <input type="text" class="form-control" style='z-index:0;height:35px' placeholder="Search ...">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-white" style='padding: 9px 14px;'>
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="datagrid-header-right pull-right">
+                                            <div class="select filter datagrid-filter" data-resize="auto">
+                                                <button type="button" data-toggle="dropdown" class="btn dropdown-toggle">
+                                                    <span class="dropdown-label" style="width: 111px;">All</span>
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li data-value="all">
+                                                        <a href="#">All</a>
+                                                    </li>
+                                                    <li data-value="0">
+                                                        <a href="#">Unconfirmed</a>
+                                                    </li>
+                                                    <li data-value="1">
+                                                        <a href="#">Pending</a>
+                                                    </li>
+                                                    <li data-value="2">
+                                                        <a href="#">In progress...</a>
+                                                    </li>
+                                                    <li data-value="4">
+                                                        <a href="#">Completed</a>
+                                                    </li>
+                                                    <li data-value="8">
+                                                        <a href="#">Cancelled</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+
+                            </thead>
+                        </table>
+                        <div class="datagrid-stretch-wrapper" style="height:auto;">
+                            <table class="table table-bordered datagrid" id="table_deposit">
+                                <thead>
+                                    <tr>
+                                        <th data-property="Created">Date/Hour</th>
+                                        <th data-property="Status">Status</th>
+                                        <th data-property="Value">Value</th>
+                                        <th data-property="ControlNumber">Transaction ID</th>
+                                        <th data-property="Data">Deposit method</th>
+                                        <th data-property="Currency">Currency</th>
+                                        
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- <tr class="deposit-list-unconfirmed" id=":2b.0d2f4e4de3304b0a823830a49b6ef6bd">
+                                        <td class="deposit-list-created">5/12/2018, 3:13:22 AM</td>
+                                        <td class="deposit-list-status">
+                                            <h5>
+                                                <span style="text-transform: uppercase" class="label label-default">Unconfirmed</span>
+                                            </h5>
+                                        </td>
+                                        <td class="deposit-list-value">
+                                            <abbr title="Dollar">$ 66.00</abbr>
+                                        </td>
+                                        <td class="deposit-list-method">501000303</td>
+                                        <td class="deposit-list-details">
+                                            <a class="btn btn-sm btn-info btn-deposit-view" target="_blank" href="https://api_testnet.blinktrade.com/get_deposit?deposit_id=0d2f4e4de3304b0a823830a49b6ef6bd">view
+                                                <i class="glyphicon glyphicon-eye-open"></i>
+                                            </a>
+                                        </td>
+                                        <td class="deposit-list-actions">
+                                            <p>VND</p>
+                                        </td>
+                                    </tr> -->
+                                    
+                                    <!-- <tr class="deposit-list-processing" id=":2b.80ac50dadce945c58e29c8eb494df013">
+                                        <td class="deposit-list-created">4/27/2018, 3:07:09 PM</td>
+                                        <td class="deposit-list-status">
+                                            <h5>
+                                                <span style="text-transform: uppercase" class="label label-info">In progress...</span>
+                                            </h5>
+                                        </td>
+                                        <td class="deposit-list-value">
+                                            <abbr title="Dollar">$ 1,000.00</abbr>
+                                        </td>
+                                        <td class="deposit-list-method">501000300</td>
+                                        <td class="deposit-list-details">
+                                            <a class="btn btn-sm btn-info btn-deposit-view" target="_blank" href="https://api_testnet.blinktrade.com/get_deposit?deposit_id=80ac50dadce945c58e29c8eb494df013">view
+                                                <i class="glyphicon glyphicon-eye-open"></i>
+                                            </a>
+                                        </td>
+                                        <td class="deposit-list-actions"></td>
+                                    </tr>
+                                     -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <table class="table table-bordered datagrid datagrid-stretch-footer">
+                            <tfoot>
+                                <tr>
+                                    <th colspan="4">
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-3">
+                                                <div class="datagrid-footer-left" style="visibility: visible;">
+                                                    <div class="grid-controls">
+                                                        <span>
+                                                            <span class="grid-start">1</span> -
+                                                            <span class="grid-end">20</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-9">
+                                                <div class="datagrid-footer-right" style="visibility: visible;">
+                                                    <div class="grid-pager pull-right">
+                                                        <button type="button" class="btn btn-outline grid-refresh">
+                                                            <i class="glyphicon glyphicon-refresh"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline grid-prevpage">
+                                                            <i class="glyphicon glyphicon-chevron-left"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline grid-nextpage">
+                                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.page__body -->
+            </div>
+            <!-- /#deposit -->
+        </div>
+        <!-- /.page-dashboard -->
+    </div>
+    <div id="notification" class="modal fade" role="dialog" tabindex="0" style="left: 0px; top: 5em;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header modal-title-draggable">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 id="title_wallet" class="modal-title">Add New Wallet VND</h4>
+                </div>
+                <div class="modal-body">
+                    
+                    <div role="document" style="padding: 10 0px;">
+                            <div class="">
+                                <!-- <div class="modal-header modal-title-draggable">
+                                    <h4 id='title_wallet' class="modal-title">Wallet VND</h4>
+                                </div> -->
+                                <div class="modal-body">
+                                    <div id="12a3euaj8xzn_form" class="form-horizontal uniForm" data-deposit-status="prepare" data-uniform-control-holder-class="form-group">
+                                        <fieldset id="account_vnd" style="display: block">
+                
+                                            <div class="withdraw-methods">
+                                                    <% if (typeof (VND) != "undefined" && VND) { %>
+                                                        <div class="form-group" style="width: 80%;padding-left:18px;">
+                                                            <div class="form-group" style="width: 80%;">
+                                                            
+                                                                <p>
+                                                                    <strong id="">Account Number: </strong>
+                                                                    <%= VND.account_no %>
+                                                                </p>
+                                                                <p>
+                                                                    <strong>Currency: </strong> VND
+                                                
+                                                                </p>
+                                                                <p>
+                                                                    <strong>Balance: </strong>  <%= VND.balance %>
+                                                    
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                            <% }
+                                                        %>
+                                                                                                                        
+                                                        
+                                            </div>
+                                        </fieldset>
+                                        <fieldset id="account_btc" style="display: none">
+                                            <div class="error"></div>
+                                            <div class="withdraw-methods">
+                                                <% if (typeof (BTC) != "undefined" && BTC) { %>
+                                                    <div class="form-group" style="padding-left:18px;">
+                                                        <center>
+                                                            <div class="form-group" style="width: 100%;">
+                                                                <div class="input-group" style='width: 100%'>
+                                                                    <button class="btn" onclick="copyClipboard(1)" style="padding: 7px 35px">
+                                                                        <i class="glyphicon glyphicon-copy" style="font-size: 29px;cursor: pointer;"></i>
+                                                                    </button>
+                                                                    <input id="address_btc_new" value='<%= BTC.subkey %>' type="text" class="withdraw-field form-control label-input-label" size="16"
+                                                                        name="address_btc_new" style="width:80%;background-color:#3333 " placeholder=""
+                                                                        readonly>
+                                                                </div>
+                
+                
+                                                                <div style="border:1px solid #2f2f2f">
+                                                                    <p>Fee deposit:
+                                                                        <strong>0.0005 BTC</strong>
+                                                                    </p>
+                                                                    <p>Address above only accept BTC currency</p>
+                                                                    <img style='padding: 0em 5em' src='https://chart.googleapis.com/chart?chs=300x300&chf=bg,s,FFFFFF00&cht=qr&choe=UTF-8&chl=<%= BTC.subkey %>'>
+                                                                    <p style="text-align: left;padding-left: 2em;">
+                                                                        <strong>Account Address:</strong>
+                                                                        <%= BTC.subkey %>
+                                                                    </p>
+                                                                    <!-- <p style="text-align: left;padding-left: 2em;"><strong>Description:</strong> <%= BTC.description %> </p> -->
+                                                                    <p style="text-align: left;padding-left: 2em;">
+                                                                        <strong>Currency:</strong>
+                                                                        <%= BTC.currency %>
+                                                                    </p>
+                                                                    <p style="text-align: left;padding-left: 2em;">
+                                                                        <strong>Balance: </strong>
+                                                                        <%= BTC.balance %> BTC</p>
+                                                                </div>
+                
+                
+                
+                                                            </div>
+                                                        </center>
+                
+                                                    </div>
+                                                    <% } %>
+                
+                
+                
+                
+                                            </div>
+                                        </fieldset>
+                                        <fieldset id="account_eth" style="display: none">
+                                            <div class="error"></div>
+                                            <div class="withdraw-methods">
+                                                <% if (typeof (ETH) != "undefined" && ETH) { %>
+                                                    <div class="form-group" style="padding-left:18px;">
+                                                        <center>
+                                                            <div class="form-group" style="width: 100%;">
+                                                                <div class="input-group" style='width: 100%'>
+                                                                    <button class="btn" onclick="copyClipboard(2)" style="padding: 7px 35px">
+                                                                        <i class="glyphicon glyphicon-copy" style="font-size: 29px;cursor: pointer;"></i>
+                                                                    </button>
+                                                                    <input id="address_eth_new" value='<%= ETH.subkey %>' type="text" class="withdraw-field form-control label-input-label" size="16"
+                                                                        name="address_eth_new" style="width:80%;background-color:#3333 " placeholder=""
+                                                                        readonly>
+                                                                </div>
+                
+                
+                                                                <div style="border:1px solid #2f2f2f">
+                                                                    <p>Fee deposit:
+                                                                        <strong>0.005 ETH</strong>
+                                                                    </p>
+                                                                    <p>Address above only accept ETH currency</p>
+                                                                    <img style='padding: 0em 5em' src="https://chart.googleapis.com/chart?chs=300x300&chf=bg,s,FFFFFF00&cht=qr&choe=UTF-8&chl=<%= ETH.subkey %>">
+                                                                    <p style="text-align: left;padding-left: 2em;">
+                                                                        <strong>Account Address: </strong>
+                                                                        <%= ETH.subkey %>
+                                                                    </p>
+                                                                    <!-- <p style="text-align: left;padding-left: 2em;"><strong>Description: </strong><%= ETH.description %> </p> -->
+                                                                    <p style="text-align: left;padding-left: 2em;">
+                                                                        <strong>Currency: </strong>
+                                                                        <%= ETH.currency %>
+                                                                    </p>
+                                                                    <p style="text-align: left;padding-left: 2em;">
+                                                                        <strong>Balance: </strong>
+                                                                        <%= ETH.balance %> ETH</p>
+                                                                </div>
+                
+                
+                                                            </div>
+                                                        </center>
+                
+                                                    </div>
+                                                    <% }else{%>
+                                                       
+                                                        <%} %>
+                
+                
+                
+                
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button name="cancel" class="btn" data-dismiss="modal">Okie</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascript/back_office/deposit.js?123"></script>

@@ -1,0 +1,266 @@
+input{
+    letter-spacing: 2px;
+}
+.detail_transaction tr td{
+    padding: 3px 5px;
+}
+tr th, tr td{
+    font-size: 13px !important;
+}
+iframe {
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+.tradingview-widget-copyright {
+    font-size: 13px !important;
+    line-height: 32px !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    font-family: 'Trebuchet MS', Tahoma, Arial, sans-serif !important;
+    color: #9db2bd !important;
+}
+
+.tradingview-widget-copyright .blue-text {
+    color: #3bb3e4 !important;
+}
+
+.tradingview-widget-copyright a {
+    text-decoration: none !important;
+    color: #9db2bd !important;
+}
+
+.tradingview-widget-copyright a:visited {
+    color: #9db2bd !important;
+}
+
+.tradingview-widget-copyright a:hover .blue-text {
+    color: #38acdb !important;
+}
+
+.tradingview-widget-copyright a:active .blue-text {
+    color: #299dcd !important;
+}
+
+.tradingview-widget-copyright a:visited .blue-text {
+    color: #3bb3e4 !important;
+}
+footer.foot{
+    background-color: #111;
+    border-top: 0.5px solid #2f2d2d;
+}
+hr{
+    border-top: 0.5px solid #1d1d1d;
+}
+.sidebar-box ul.sidebar-box-nav li a{
+    color:#999;
+    
+}       
+.sidebar-box ul.sidebar-box-nav li a:hover{
+    background-color:#fd961a !important;
+    color:#fff;
+}            
+.menu-active a{
+    background-color:#fd961a !important;
+    color:#fff;
+}
+.container_style{
+    background-color:#111;
+}
+.head-ticker__title > span{
+    color: #999;
+}
+.btn-deposit i,.btn-withdraw i,.glyphicon-triangle-right{
+    color :#fd961a !important
+}
+.page__content{
+    background-color: #1d1d1d
+}
+#offer_book_order_entry_content{
+    background: none;
+}
+.foot a{
+    color: #999
+}
+.order{
+    background: none;
+    border: 0.5px solid #2f2d2d;
+}
+
+h3,h1,h2,h4,h5,strong,legend,  .head-top-button > i{
+    color: #fd961a !important
+}
+body{
+    color:#999;
+    font-family: 'Lato', sans-serif;
+}
+.page__sidebar ,.sidebar-box-nav > li{
+    border-bottom: 0.5px solid #2f2d2d;
+}
+.page__sidebar{
+    box-sizing: border-box;
+    border-right: 0.5px solid #2f2d2d;
+}
+.sidebar_remittances{
+    border-left: 0.5px solid #2f2d2d;
+}
+.bayyadiv, .fuelux .table td, .fuelux .table thead th, .fuelux .datagrid-stretch-wrapper, .fuelux .table-bordered
+, .table-bordered>tfoot>tr>th{
+    background: none !important;
+    border: 0.5px solid #2f2d2d;
+}
+.fuelux .table thead, .fuelux .table tbody{
+    background:none
+}
+.form-control, .order-form__label, .input-group-addon{
+    background-color:#222;
+    border: 0.5px solid #2f2d2d;
+    color: #999;
+    
+}
+.input-group{
+    width: 100%;
+}
+.error-value{
+    color:#e63939
+}
+.form-control:focus{
+    border-color:#2d2d2d;
+    color: #fff
+}
+.dropdown-menu{
+    background-color: #1d1d1d;
+    color: #fff;
+}
+.dropdown-menu>li>a:hover{
+    background:none;
+    color: #fd961a !important; 
+}
+.toggle{
+    background:#999;
+    color: #fff;
+}
+.dropdown-menu>li>a{
+    color:#999 !important;
+}
+.btn{
+    color: #fd961a;
+    border: 1px solid #fd961a !important;
+    background: none;
+}
+.btn:hover{
+    color: #fff;
+    border: 1px solid #fd961a !important;
+    background: #fd961a;
+}
+a{
+    color: #aaa;
+}
+a:hover{
+    color: #fd961a;
+}
+.orders__head{
+    border-bottom: 0.5px solid #2f2d2d;
+}
+.order .order__cell:first-child .orders__head{
+    background-color: #2f2d2d;
+}
+.order .order__cell:last-child .orders__head{
+    background-color: #2f2f2f;
+}
+.table>tbody>tr>td{
+    border-top: 0.5px solid #2f2d2d;
+}
+.table>thead>tr>th{
+    border-bottom: 0.5px solid #2f2d2d;
+}
+.order__cell:first-child{
+    border-right: 0.5px solid #2f2d2d;
+}
+.order__cell{
+    border-bottom: 0.5px solid #2f2d2d;
+}
+.page__section_white{
+    background :none;
+    border: 0.5px solid #2f2d2d;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2f2d2d;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background:#fd961a;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #fd961a;
+}
+.btn-info:active, .btn-success:focus,.btn-danger:focus,.btn-outline:focus,.btn:focus,.btn-danger:focus,.btn-danger:active,.btn:active
+,.btn-success:active, .btn-success.active, .open>.btn-success.dropdown-toggle{
+    color: #fff;
+    background-color: #fd961a !important;
+    border-color: #fd961a !important;
+}
+.btn-info:focus{
+    color: #fff;
+    background-color: #fd961a;;
+    border-color: #fd961a;;
+}
+.select{
+    padding: 0;
+}
+@media (min-width: 992px){
+    .order-form__label{
+        padding: 6px 8px;
+    }
+}
+.fatrading{
+    padding: 6px;
+}
+.btn-primary{
+    padding: 6px 12px;
+    color: #fff;
+    background:  #fd961a;
+}
+.modal-content{
+    background: #1d1d1d;
+}
+.table-bordered >tbody>tr>td{
+    border: 0.5px solid #2f2d2d;
+}
+.alert-success, .alert-info{
+    background-color: #999;
+    color: #fff;
+}
+#order_entry_total,#order_entry_total_advanced, #order_entry_total_sell, #order_entry_total_advanced_sell{
+    background-color: #232322;
+}
+.order-manager-actions{
+    text-align: center;
+}
+.btn-condition{
+    font-size: 12px !important;
+}
+.dataTables_length,.dataTables_filter{
+    display: none;
+}
+.balance-info-blink{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.key-code{
+    letter-spacing: 4px;
+    border-radius: 30px;
+    font-size: 20px;
+    background: #222;
+    border: none;
+    text-align: center;
+}

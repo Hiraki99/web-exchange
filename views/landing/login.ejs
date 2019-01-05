@@ -1,0 +1,126 @@
+<% layout ("../layout/layout_landing_page") -%>
+
+    <link rel="stylesheet" href="/css/pace-theme-minimal.css" />
+    <div class="container-fluid user-auth">
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4">
+            <!-- Logo Starts -->
+            <a class="logo" href="/">
+                <img class="img-responsive" src="/images/logo-trex-white.png" alt="logo" style='width: 161px;'>
+            </a>
+            <!-- Logo Ends -->
+            <!-- Slider Starts -->
+            <div id="carousel-testimonials" class="carousel slide carousel-fade" data-ride="carousel">
+                <!-- Indicators Starts -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-testimonials" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-testimonials" data-slide-to="1"></li>
+                    <li data-target="#carousel-testimonials" data-slide-to="2"></li>
+                </ol>
+                <!-- Indicators Ends -->
+                <!-- Carousel Inner Starts -->
+                <div class="carousel-inner">
+                    <!-- Carousel Item Starts -->
+                    <div class="item active item-1">
+                        <div>
+                            <blockquote>
+                                <p>This is a realistic program for anyone looking for site to invest. Paid to me regularly,
+                                    keep up good work!</p>
+                                <footer>
+                                    <span>Lucy Smith</span>, England</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <!-- Carousel Item Ends -->
+                    <!-- Carousel Item Starts -->
+                    <div class="item item-2">
+                        <div>
+                            <blockquote>
+                                <p>Bitcoin doubled in 7 days. You should not expect anything more. Excellent customer service!</p>
+                                <footer>
+                                    <span>Slim Hamdi</span>, Tunisia</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <!-- Carousel Item Ends -->
+                    <!-- Carousel Item Starts -->
+                    <div class="item item-3">
+                        <div>
+                            <blockquote>
+                                <p>My family and me want to thank you for helping us find a great opportunity to make money
+                                    online. Very happy with how things are going!</p>
+                                <footer>
+                                    <span>Rawia Chniti</span>, Russia</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <!-- Carousel Item Ends -->
+                </div>
+                <!-- Carousel Inner Ends -->
+            </div>
+            <!-- Slider Ends -->
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <!-- Logo Starts -->
+            <a class="visible-xs" href="/">
+                <img class="img-responsive mobile-logo" src="/images/logo-trex-white.png" alt="logo" style='width: 161px;'>
+            </a>
+
+
+            <!-- Logo Ends -->
+            <div class="form-container">
+                <div>
+                    <!-- Section Title Starts -->
+                    <div class="row text-center">
+                        <h2 class="title-head hidden-xs">member
+                            <span>login</span>
+                        </h2>
+                        <p class="info-form">Send, receive and securely store your coins in your wallet</p>
+                    </div>
+                    <!-- Section Title Ends -->
+                    <!-- Form Starts -->
+                    <form method="POST" id='login_form'>
+                        <!-- Input Field Starts -->
+                        <%if (status) { %>
+                            <div class="row text-center">
+                                <p style='color:#35a93d'>Your account active succesful. Please log in to Login System</p>
+                            </div>
+                            <% } %>
+                                <div class="form-group">
+                                    <p id='message_error' style='color:#ca1645'></p>
+                                </div>
+
+                                <div class="form-group">
+                                    <input class="form-control" name="username" id="username" placeholder="USERNAME" type="text" required>
+                                </div>
+                                <!-- Input Field Ends -->
+                                <!-- Input Field Starts -->
+                                <div class="form-group">
+                                    <input class="form-control" name="password" id="password" placeholder="PASSWORD" type="password" required>
+                                    <span style="font-size: 12px; text-decoration: underline">
+                                        <a onclick="redirect('/reset-password')">Forget Password</a>
+                                    </span>
+                                </div>
+                                <!-- <div class="form-group">
+                                <input class="form-control" name="auth" id="auth" placeholder="ENTER AUTH IF ONLY THAT IS ENABLE " type="text">
+                            </div> -->
+                                <div class="form-group">
+                                    <div class="g-recaptcha" data-sitekey="6LcyoV8UAAAAALld8maslgJOUTQO4PBbG_FTdMaY"></div>
+                                </div>
+                                <!-- Input Field Ends -->
+                                <!-- Submit Form Button Starts -->
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">login</button>
+                                    <p class="text-center">don't have an account ?
+                                        <a href="/signup">Sign up now</a>
+                                </div>
+                                <!-- Submit Form Button Ends -->
+                    </form>
+                    <!-- Form Ends -->
+                </div>
+            </div>
+            <!-- Copyright Text Starts -->
+            <p class="text-center copyright-text">T-Rex © 2018 T-Rex Exchange Cryptocurrency</p>
+            <!-- Copyright Text Ends -->
+        </div>
+    </div>
+    <script src='/js/front_end/landing/login.js?v=13111'></script>

@@ -1,0 +1,280 @@
+<% layout ("../layout/layout_backoffice") -%>
+    <div id="sidebar_content" class="col-md-8 page__sidebar_content">
+        <!-- .page-dashboard -->
+        <div class="page-dashboard">
+           
+            <!-- #ledger -->
+            <div id="ledger" class="bitex-view bitex-view-active" style="">
+                <!-- .page__head -->
+                <header class="page__head section-title">
+                    <h1 class="page__title h2 bitex-view-title">
+                        <i class="glyphicon glyphicon-th-list"></i> Ledger
+                    </h1>
+                </header>
+                <!-- /.page__head -->
+
+                <!-- .page__body -->
+                <div class="page__body bitex-view-content">
+                    <div id="id_ledger_balances_container"></div>
+
+                    <div id="id_ledger_list"></div>
+                    <div id=":25.grid" class="fuelux datagrid" style="width:100%;">
+                        <table class="table table-bordered datagrid datagrid-stretch-header">
+                            <thead>
+                                <tr>
+                                    <th colspan="6">
+                                        <span class="datagrid-header-title pull-left">
+                                            <strong>Ledger</strong>
+                                        </span>
+                                        <div class="datagrid-header-left pull-left">
+                                            <div class="input-group search datagrid-search">
+                                                <input type="text" class="form-control" placeholder="Search ...">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-white">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="datagrid-header-right pull-right">
+                                            <div class="select filter datagrid-filter" data-resize="auto">
+                                                <button type="button" data-toggle="dropdown" class="btn dropdown-toggle">
+                                                    <span class="dropdown-label" style="width: 111px;">All currencies</span>
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li data-value="all">
+                                                        <a href="#">All currencies</a>
+                                                    </li>
+                                                    <li data-value="{&quot;currency&quot;:&quot;USD&quot;,&quot;broker_id&quot;:5}">
+                                                        <a href="#">Dollar</a>
+                                                    </li>
+                                                    <li data-value="{&quot;currency&quot;:&quot;BTC&quot;,&quot;broker_id&quot;:5}">
+                                                        <a href="#">Bitcoin</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th data-property="Created" style="width: 164px;">Date/Time</th>
+                                    <th data-property="Currency" style="width: 80px;">Currency</th>
+                                    <th data-property="Description" style="width: 125px;">Description</th>
+                                    <th data-property="PayeeID" style="width: 116px;">Payee</th>
+                                    <th data-property="Amount" style="width: 121px;">Amount</th>
+                                    <th data-property="Balance" style="width: 119px;">Balance</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="datagrid-stretch-wrapper" style="height:360px;">
+                            <table class="table table-bordered datagrid">
+                                <tbody>
+                                    <tr class="ledger-activity-credit">
+                                        <td class="ledger-activity-date-time" style="width: 164px;">5/16/2018, 9:38:06 PM</td>
+                                        <td class="ledger-activity-currency" style="width: 80px;">USD</td>
+                                        <td class="ledger-activity-description" style="width: 125px;">Fee on withdraw</td>
+                                        <td class="deposit-list-payee" style="width: 116px;"></td>
+                                        <td class="ledger-activity-amount" style="width: 121px;">$ 1.00</td>
+                                        <td class="ledger-activity-balance" style="width: 119px;">$ 1,565,003.64</td>
+                                    </tr>
+                                    <tr class="ledger-activity-credit">
+                                        <td class="ledger-activity-date-time">5/16/2018, 9:38:06 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Withdraw</td>
+                                        <td class="deposit-list-payee"></td>
+                                        <td class="ledger-activity-amount">$ 100.00</td>
+                                        <td class="ledger-activity-balance">$ 1,565,002.64</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/16/2018, 9:37:57 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Fee on withdraw</td>
+                                        <td class="deposit-list-payee"></td>
+                                        <td class="ledger-activity-amount">($ 1.00)</td>
+                                        <td class="ledger-activity-balance">$ 1,564,902.64</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/16/2018, 9:37:57 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Withdraw</td>
+                                        <td class="deposit-list-payee"></td>
+                                        <td class="ledger-activity-amount">($ 100.00)</td>
+                                        <td class="ledger-activity-balance">$ 1,564,903.64</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/15/2018, 9:11:43 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Fee on withdraw</td>
+                                        <td class="deposit-list-payee"></td>
+                                        <td class="ledger-activity-amount">($ 8.00)</td>
+                                        <td class="ledger-activity-balance">$ 1,565,003.64</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/15/2018, 9:11:43 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Withdraw</td>
+                                        <td class="deposit-list-payee"></td>
+                                        <td class="ledger-activity-amount">($ 800.00)</td>
+                                        <td class="ledger-activity-balance">$ 1,565,011.64</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:46 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Fee on trade</td>
+                                        <td class="deposit-list-payee"></td>
+                                        <td class="ledger-activity-amount">($ 0.01)</td>
+                                        <td class="ledger-activity-balance">$ 1,565,811.64</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:46 PM</td>
+                                        <td class="ledger-activity-currency">BTC</td>
+                                        <td class="ledger-activity-description">Trade</td>
+                                        <td class="deposit-list-payee">Rhino_899009</td>
+                                        <td class="ledger-activity-amount">(฿ 0.00100000)</td>
+                                        <td class="ledger-activity-balance">฿ 9.82309133</td>
+                                    </tr>
+                                    <tr class="ledger-activity-credit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:46 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Trade</td>
+                                        <td class="deposit-list-payee">Rhino_899009</td>
+                                        <td class="ledger-activity-amount">$ 1.00</td>
+                                        <td class="ledger-activity-balance">$ 1,565,811.65</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:46 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Fee on trade</td>
+                                        <td class="deposit-list-payee"></td>
+                                        <td class="ledger-activity-amount">($ 0.01)</td>
+                                        <td class="ledger-activity-balance">$ 1,565,810.65</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:46 PM</td>
+                                        <td class="ledger-activity-currency">BTC</td>
+                                        <td class="ledger-activity-description">Trade</td>
+                                        <td class="deposit-list-payee">Rhino_899009</td>
+                                        <td class="ledger-activity-amount">(฿ 0.00100000)</td>
+                                        <td class="ledger-activity-balance">฿ 9.82409133</td>
+                                    </tr>
+                                    <tr class="ledger-activity-credit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:46 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Trade</td>
+                                        <td class="deposit-list-payee">Rhino_899009</td>
+                                        <td class="ledger-activity-amount">$ 1.00</td>
+                                        <td class="ledger-activity-balance">$ 1,565,810.66</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:45 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Fee on trade</td>
+                                        <td class="deposit-list-payee"></td>
+                                        <td class="ledger-activity-amount">($ 0.01)</td>
+                                        <td class="ledger-activity-balance">$ 1,565,809.66</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:45 PM</td>
+                                        <td class="ledger-activity-currency">BTC</td>
+                                        <td class="ledger-activity-description">Trade</td>
+                                        <td class="deposit-list-payee">Rhino_899009</td>
+                                        <td class="ledger-activity-amount">(฿ 0.00100000)</td>
+                                        <td class="ledger-activity-balance">฿ 9.82509133</td>
+                                    </tr>
+                                    <tr class="ledger-activity-credit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:45 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Trade</td>
+                                        <td class="deposit-list-payee">Rhino_899009</td>
+                                        <td class="ledger-activity-amount">$ 1.00</td>
+                                        <td class="ledger-activity-balance">$ 1,565,809.67</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:45 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Fee on trade</td>
+                                        <td class="deposit-list-payee"></td>
+                                        <td class="ledger-activity-amount">($ 0.01)</td>
+                                        <td class="ledger-activity-balance">$ 1,565,808.67</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:45 PM</td>
+                                        <td class="ledger-activity-currency">BTC</td>
+                                        <td class="ledger-activity-description">Trade</td>
+                                        <td class="deposit-list-payee">Rhino_899009</td>
+                                        <td class="ledger-activity-amount">(฿ 0.00100000)</td>
+                                        <td class="ledger-activity-balance">฿ 9.82609133</td>
+                                    </tr>
+                                    <tr class="ledger-activity-credit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:45 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Trade</td>
+                                        <td class="deposit-list-payee">Rhino_899009</td>
+                                        <td class="ledger-activity-amount">$ 1.00</td>
+                                        <td class="ledger-activity-balance">$ 1,565,808.68</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:44 PM</td>
+                                        <td class="ledger-activity-currency">USD</td>
+                                        <td class="ledger-activity-description">Fee on trade</td>
+                                        <td class="deposit-list-payee"></td>
+                                        <td class="ledger-activity-amount">($ 0.01)</td>
+                                        <td class="ledger-activity-balance">$ 1,565,807.68</td>
+                                    </tr>
+                                    <tr class="ledger-activity-debit">
+                                        <td class="ledger-activity-date-time">5/9/2018, 6:58:44 PM</td>
+                                        <td class="ledger-activity-currency">BTC</td>
+                                        <td class="ledger-activity-description">Trade</td>
+                                        <td class="deposit-list-payee">Rhino_899009</td>
+                                        <td class="ledger-activity-amount">(฿ 0.00100000)</td>
+                                        <td class="ledger-activity-balance">฿ 9.82709133</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <table class="table table-bordered datagrid datagrid-stretch-footer">
+                            <tfoot>
+                                <tr>
+                                    <th colspan="4">
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-3">
+                                                <div class="datagrid-footer-left" style="visibility: visible;">
+                                                    <div class="grid-controls">
+                                                        <span>
+                                                            <span class="grid-start">1</span> -
+                                                            <span class="grid-end">20</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-9">
+                                                <div class="datagrid-footer-right" style="visibility: visible;">
+                                                    <div class="grid-pager pull-right">
+                                                        <button type="button" class="btn btn-outline grid-refresh">
+                                                            <i class="glyphicon glyphicon-refresh"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline grid-prevpage">
+                                                            <i class="glyphicon glyphicon-chevron-left"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline grid-nextpage">
+                                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.page__body -->
+            </div>
+            <!-- /#ledger -->
+
+            
+        </div>
+        <!-- /.page-dashboard -->
+    </div>

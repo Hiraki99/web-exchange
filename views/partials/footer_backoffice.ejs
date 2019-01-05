@@ -1,0 +1,255 @@
+<footer class="foot">
+    <!-- .wrapper -->
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5>Company</h5>
+                    <ul>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+
+                        <li>
+                            <a href="http://www.foxbit.com.br/blog/" target="_blank">Blog</a>
+                        </li>
+
+                        <li>
+                            <a href="http://www.foxbit.com.br/grafico/" target="_blank">Chart</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Platform</h5>
+                    <ul>
+
+                        <li>
+                            <a href="" data-switch-view="themes">Themes</a>
+                        </li>
+                        <li>
+                            Latency:
+                            <span class="bitex-model" data-model-key="latency">401</span> ms
+                        </li>
+
+                        <li>
+                            Version: ea45ade
+                        </li>
+                        <li>
+                            <a href="https://github.com/blinktrade/" target="_blank">Proudly 100% open source
+                                <span class="bitex-model" data-model-key="JSVersion">0.3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://nytm.org/made-in-nyc/" target="_blank">Made with
+                                <span style="color: #d11f0d;font-size: 19px;">♥</span> in NYC</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h5></h5>
+                    <ul>
+                        <li class="bitex-model" style="" data-model-key="IsProTrader" data-model-action="show_element">
+                            <a href="#" data-switch-view="api">API </a>
+                        </li>
+                        <li>
+
+                            <a href="" data-switch-view="faq">Suggestions &amp; Support</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row center">
+                <a href="http://blinktrade.com/" target="_blank">© 2014 BlinkTrade Inc</a>
+                <hr>
+            </div>
+            <div class="row foot-social">
+
+                <div class="col-sm-2 col-sm-offset-2">
+                    <div class="social-button">
+                        <h3>
+                            <a href="https://www.facebook.com/foxbitcoin" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-2">
+                    <div class="social-button">
+                        <h3>
+                            <a href="https://twitter.com/foxbitcoin" target="_blank">
+                                <i class="fa fa fa-twitter-square"></i>
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-2">
+                    <div class="social-button">
+                        <h3>
+                            <a href="https://plus.google.com/+FoxbitBrasil/posts" target="_blank">
+                                <i class="fa fa fa-google-plus-square"></i>
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-2">
+                    <div class="social-button">
+                        <h3>
+                            <a href="https://www.youtube.com/playlist?list=PL6c8tfdY-CX_VTwU1B9XbzWtIQjY__vrW" target="_blank">
+                                <i class="fa fa-youtube-play"></i>
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.wrapper -->
+</footer>
+<!-- /.foot -->
+
+<div id="id_notifications" class="notifications top-right" style="z-index: 9000;">
+    <!-- <div class="alert alert-info">
+        <button class="close pull-right" onclick='$(this).parent().remove();'>×</button>
+        <span>
+            <strong>Cancelling order...</strong> :1459030503297</span>
+    </div>
+    <div class="alert alert-success">
+        <button class="close pull-right" onclick='$(this).parent().remove();'>×</button>
+        <span>
+            <strong>Order 1459030503297 </strong> cancelled</span>
+    </div> -->
+</div>
+
+<script data-cfasync="false" type="text/javascript">
+    var _app; // global application object
+    (function () {
+        var broker_id = 5;
+        var country_code = "US";
+        var blinktrade_api = "api_testnet.blinktrade.com";
+        var symbol = "BTCUSD";
+        var required_level_to_be_a_pro_trader = 0;
+
+        var remittance_box = {
+            'BRL': [
+                ['BitFinexUSD', 'USD', 'BITFINEX_BTCUSD_BEST_BID / 100000000',
+                    'BITFINEX_BTCUSD_BEST_ASK / 100000000'
+                ],
+                ['Dólar Bitcoin', 'BRL', 'BLINK_BTCBRL_BEST_BID /  BITFINEX_BTCUSD_BEST_ASK',
+                    'BLINK_BTCBRL_BEST_ASK /  BITFINEX_BTCUSD_BEST_BID'
+                ],
+                ['Dólar Turismo', 'BRL', 'UOL_USDBRT_BEST_BID / 100000000',
+                    'UOL_USDBRT_BEST_ASK / 100000000'
+                ]
+            ],
+            'USD': [
+                ['BitFinexUSD', 'USD', 'BITFINEX_BTCUSD_BEST_BID / 100000000',
+                    'BITFINEX_BTCUSD_BEST_ASK / 100000000'
+                ],
+                ['BitStampUSD', 'USD', 'BITSTAMP_BTCUSD_BEST_BID / 100000000',
+                    'BITSTAMP_BTCUSD_BEST_ASK / 100000000'
+                ],
+                ['KrakenUSD', 'USD', 'KRAKEN_BTCUSD_BEST_BID / 100000000',
+                    'KRAKEN_BTCUSD_BEST_ASK / 100000000'
+                ],
+                ['itBitUSD', 'USD', 'ITBIT_BTCUSD_BEST_BID / 100000000',
+                    'ITBIT_BTCUSD_BEST_ASK / 100000000'
+                ]
+            ],
+            'VEF': [
+                ['BitFinexUSD', 'USD', 'BITFINEX_BTCUSD_BEST_BID / 100000000',
+                    'BITFINEX_BTCUSD_BEST_ASK / 100000000'
+                ],
+                ['USD -> BTC -> VEF', 'VEF', 'BLINK_BTCVEF_BEST_BID /  BITFINEX_BTCUSD_BEST_ASK',
+                    'BLINK_BTCVEF_BEST_ASK /  BITFINEX_BTCUSD_BEST_BID'
+                ],
+                ['BRL -> BTC -> VEF', 'VEF', 'BLINK_BTCVEF_BEST_BID /  BLINK_BTCBRL_BEST_ASK',
+                    'BLINK_BTCVEF_BEST_ASK /  BLINK_BTCBRL_BEST_BID'
+                ],
+                ['VEF -> BTC -> CLP', 'CLP', 'BLINK_BTCCLP_BEST_BID /  BLINK_BTCVEF_BEST_ASK',
+                    'BLINK_BTCCLP_BEST_ASK /  BLINK_BTCVEF_BEST_BID'
+                ]
+            ],
+            'CLP': [
+                ['BitFinexUSD', 'USD', 'BITFINEX_BTCUSD_BEST_BID / 100000000',
+                    'BITFINEX_BTCUSD_BEST_ASK / 100000000'
+                ],
+                ['USD -> BTC -> CLP', 'CLP', 'BLINK_BTCCLP_BEST_BID /  BITFINEX_BTCUSD_BEST_ASK',
+                    'BLINK_BTCCLP_BEST_ASK /  BITFINEX_BTCUSD_BEST_BID'
+                ],
+                ['BRL -> BTC -> CLP', 'CLP', 'BLINK_BTCCLP_BEST_BID /  BLINK_BTCBRL_BEST_ASK',
+                    'BLINK_BTCCLP_BEST_ASK /  BLINK_BTCBRL_BEST_BID'
+                ],
+                ['VEF -> BTC -> CLP', 'CLP', 'BLINK_BTCCLP_BEST_BID /  BLINK_BTCVEF_BEST_ASK',
+                    'BLINK_BTCCLP_BEST_ASK /  BLINK_BTCVEF_BEST_BID'
+                ]
+            ],
+            'PKR': [
+                ['BitFinexUSD', 'USD', 'BITFINEX_BTCUSD_BEST_BID / 100000000',
+                    'BITFINEX_BTCUSD_BEST_ASK / 100000000'
+                ],
+                ['USD -> BTC -> PKR', 'PKR', 'BLINK_BTCPKR_BEST_BID /  BITFINEX_BTCUSD_BEST_ASK',
+                    'BLINK_BTCPKR_BEST_ASK /  BITFINEX_BTCPKR_BEST_BID'
+                ]
+            ]
+        };
+
+        _app = new BlinkTradeApp(broker_id, remittance_box, country_code, symbol);
+        _app.run(blinktrade_api, required_level_to_be_a_pro_trader);
+    })();
+</script>
+
+
+
+<script data-cfasync="false" type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', '_gat');
+
+    _gat('create', 'UA-53856711-1', 'auto');
+    _gat('send', 'pageview');
+</script>
+
+
+
+<!--Start of Zopim Live Chat Script-->
+<script data-cfasync="false" type="text/javascript">
+    window.$zopim || (function (d, s) {
+        var z = $zopim = function (c) {
+                z._.push(c)
+            },
+            $ = z.s =
+            d.createElement(s),
+            e = d.getElementsByTagName(s)[0];
+        z.set = function (o) {
+            z.set.
+            _.push(o)
+        };
+        z._ = [];
+        z.set._ = [];
+        $.async = !0;
+        $.setAttribute('charset', 'utf-8');
+        $.src = 'https://v2.zopim.com/?2SSNIzvxy8fBypKoZJ0pI43tUoNCv8os';
+        z.t = +new Date;
+        $.
+        type = 'text/javascript';
+        e.parentNode.insertBefore($, e)
+    })(document, 'script');
+</script>
+End of Zopim Live Chat Script -->
